@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>❤️</title>
   <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+
     canvas {
       position: absolute;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(13, 252, 0, 0.679);
+      background-color: rgba(0, 0, 0, 0.2);
+      object-fit: cover;
+      /* Ajusta para cobrir a tela sem distorção */
     }
   </style>
 </head>
+
 <body>
   <canvas id="heart"></canvas>
   <script>
@@ -57,10 +70,10 @@
       ctx.fillRect(0, 0, width, height);
 
       var drawText = function () {
-        ctx.font = "60px Arial"; 
+        ctx.font = "60px Arial";
         ctx.fillStyle = "lightblue";
         ctx.textAlign = "center";
-        ctx.fillText("", width / 2, height / 2.2 + 400); 
+        ctx.fillText("", width / 2, height / 2.2 + 400);
       };
 
       var heartPosition = function (rad) {
@@ -90,11 +103,11 @@
       var pointsOrigin = [];
       var dr = mobile ? 0.3 : 0.1;
       for (var i = 0; i < Math.PI * 2; i += dr)
-        pointsOrigin.push(scaleAndTranslate(heartPosition(i), 310, 19, 0, 0)); 
+        pointsOrigin.push(scaleAndTranslate(heartPosition(i), 310, 19, 0, 0));
       for (var i = 0; i < Math.PI * 2; i += dr)
-        pointsOrigin.push(scaleAndTranslate(heartPosition(i), 250, 15, 0, 0)); 
+        pointsOrigin.push(scaleAndTranslate(heartPosition(i), 250, 15, 0, 0));
       for (var i = 0; i < Math.PI * 2; i += dr)
-        pointsOrigin.push(scaleAndTranslate(heartPosition(i), 190, 11, 0, 0)); 
+        pointsOrigin.push(scaleAndTranslate(heartPosition(i), 190, 11, 0, 0));
 
       var heartPointsCount = pointsOrigin.length;
       var targetPoints = [];
@@ -136,7 +149,7 @@
         ctx.fillStyle = "rgba(0,0,0,.1)";
         ctx.fillRect(0, 0, width, height);
 
-        for (var i = e.length; i--; ) {
+        for (var i = e.length; i--;) {
           var u = e[i];
           var q = targetPoints[u.q];
           var dx = u.trace[0].x - q[0];
@@ -183,4 +196,5 @@
     else document.addEventListener("DOMContentLoaded", init);
   </script>
 </body>
+
 </html>
